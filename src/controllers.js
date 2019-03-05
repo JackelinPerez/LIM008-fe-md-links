@@ -13,6 +13,8 @@ const mdLinks = (dir, statsOrValidate) =>{
 		try {
 			const saveDataFileMds = []
 			const arrayDir = getAllFilesMd(dirRelativeToAbsolute(dir), '.md',[]);
+			console.log(arrayDir);
+			
 			arrayDir.forEach(element => {
 				saveDataFileMds.push(getAllLinksFiles(element));
 			});

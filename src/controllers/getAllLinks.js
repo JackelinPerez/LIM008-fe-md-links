@@ -4,6 +4,7 @@ export const getAllLinksFiles= (dirFilesMds) => {
     const arrayDataLinks = [];
     const readFileMd = fs.readFileSync(dirFilesMds).toString();
     let arrayMatchLinks = readFileMd.match(reglinkIntoMd);
+
     if(arrayMatchLinks !== null){
         arrayMatchLinks.forEach((link) => {
             const saveLinks = {file: '', href: '', text: '',};
@@ -14,6 +15,7 @@ export const getAllLinksFiles= (dirFilesMds) => {
             arrayDataLinks.push(saveLinks);
         });
     }
+    else arrayDataLinks.push({file: dirFilesMds, href: '', text: '',});
     return arrayDataLinks;
 }
 

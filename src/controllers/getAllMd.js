@@ -18,6 +18,6 @@ export const getAllFilesMd= (dirAbsOrRel, extenFile, savefilesMD) => {
     return savefilesMD;	
   }
   catch (err) {
-    console.log(err.message);
+    return console.log(err.message);
   }
 };
