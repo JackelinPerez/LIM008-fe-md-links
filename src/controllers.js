@@ -27,7 +27,7 @@ const mdLinks = (dir, statsOrValidate) =>{
 }
 mdLinks(dir_, statsOrValidate)
 .then((resolve) =>{
-    console.log(resolve);
+    //console.log(resolve);
 })
 .catch((err) =>{
     console.log(err);
