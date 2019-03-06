@@ -1,6 +1,7 @@
 import {getAllFilesMd, dirRelativeToAbsolute} from "./controllers/getAllMd.js";
 import {getAllLinksFiles} from "./controllers/getAllLinks.js";
-import {validateStats} from "./controllers/validateStats.js"
+import {validateStats} from "./controllers/validateStats.js";
+import {readLinks, getResponse} from './controllers/readLinks.js';
 
 const inputPath = process.argv[2];
 let statsOrValidate = {
@@ -15,13 +16,25 @@ const mdLinks = (dir, statsOrValidate) =>{
 		try {
 			const saveDataFileMds = []
 			const arrayDir = getAllFilesMd(dirRelativeToAbsolute(dir), '.md',[]);
-			// console.log(arrayDir);
 			console.log(statsOrValidate);
 
-			arrayDir.forEach(element => {
-				saveDataFileMds.push(getAllLinksFiles(element));
-			});
-            return resolve(saveDataFileMds);
+			if (statsOrValidate.states && statsOrValidate.validate) {
+
+			}
+			else if(statsOrValidate.states && !statsOrValidate.validate){
+
+			}
+			else if(!statsOrValidate.states && statsOrValidate.validate){
+				const files = arrayDir;
+				const promises = files.map(file => getResponse(file));
+				Promise.all(promises).then(responses => resolve(responses))
+			}
+			else {
+				arrayDir.forEach(dirMd => {
+					saveDataFileMds.push(getAllLinksFiles(dirMd));
+				});
+				return resolve(saveDataFileMds);	
+			}
 		}
 		catch (err){
 			reject(err);
