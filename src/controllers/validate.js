@@ -1,6 +1,16 @@
-import readLinks from 'readLinks.js'
+import {readLinks} from './readLinks.js'
 
-export const validate = (link) =>{
-   const statusLink =  readLinks(link);
-   return `${statusLink.status} ${statusLink.statusText}`;
+export const validate = (links) =>{
+    const promises = links.map(link => {
+        return readLinks(link.href)
+        .then(response => {
+                return {
+                    ...link,
+                    statusValue: !!response ?`${response.status}`: 'empty',
+                    statusMessage: !!response ? `${response.statusText}` : "empty"
+                };
+        })
+    })
+
+    return Promise.all(promises);
 }

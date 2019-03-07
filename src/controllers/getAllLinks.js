@@ -1,21 +1,21 @@
-import {path, fs, reglinkIntoMd, regTextHref} from '../util/util.js';
+import {fs, reglinkIntoMd, regTextHref} from '../util/util.js';
 
-export const getAllLinksFiles= (dirFilesMds) => {
-    const arrayDataLinks = [];
-    const readFileMd = fs.readFileSync(dirFilesMds).toString();
-    let arrayMatchLinks = readFileMd.match(reglinkIntoMd);
-
-    if(arrayMatchLinks !== null){
-        arrayMatchLinks.forEach((link) => {
-            const saveLinks = {file: '', href: '', text: '',};
-            const dataLink = link.match(regTextHref);
-            saveLinks.file = dirFilesMds;
-            saveLinks.text = dataLink[1];
-            saveLinks.href = dataLink[2];
-            arrayDataLinks.push(saveLinks);
-        });
+export const getAllLinksFile= (fileMdPath) => {
+    let dataLinks = [];
+    const readFileMd = fs.readFileSync(fileMdPath, 'utf8').toString();
+    let linksMatch = readFileMd.match(reglinkIntoMd);
+    if(linksMatch !== null){
+        dataLinks = linksMatch.reduce((dataLink,link) => {
+            const textHref = link.match(regTextHref);
+            dataLink.push({ 
+                file: fileMdPath,
+                text: textHref[1],
+                href: textHref[2]
+            });
+            return dataLink;
+        }, []);
     }
-    else arrayDataLinks.push({file: dirFilesMds, href: '', text: '',});
-    return arrayDataLinks;
+    else dataLinks.push({file: fileMdPath, text: '', href: '',});
+    return dataLinks;
 }
 
