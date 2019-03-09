@@ -12,5 +12,5 @@ export const stats = (dataLinks) => {
     saveUnike = Object.keys(unikeLinks);
   }
   return (links[0] !== '') ? 
-    {File: dataLinks[0].file, Total: links.length, Unique: saveUnike.length} : {File: dataLinks[0].file, Total: '', Unique: ''};
+    {file: dataLinks[0].file, total: links.length, unique: saveUnike.length} : {file: dataLinks[0].file, total: '', unique: ''};
 };

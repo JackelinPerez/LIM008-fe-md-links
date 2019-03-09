@@ -20,8 +20,8 @@ const mdLinks = (dir, statsOrValidate) => {
         const promises = files.map(file => validate(getAllLinksFile(file)));
         Promise.all(promises).then(responses => {
           const dataAllLinks = responses.map((response) => {
-            const LinksBroken = response.filter((dataLink) => dataLink.statusValue !== '200');
-            return {...stats(response), Broken: LinksBroken.length};
+            const linksBroken = response.filter((dataLink) => dataLink.statusValue !== '200');
+            return {...stats(response), broken: linksBroken.length};
           });
           resolve(dataAllLinks);
         });
@@ -40,6 +40,7 @@ const mdLinks = (dir, statsOrValidate) => {
     }    
   });
 };
+
 mdLinks(inputPath, statsOrValidate)
   .then((resolve) => {
     console.log(resolve);

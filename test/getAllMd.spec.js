@@ -15,10 +15,10 @@ const outGetAllMds = [
   'pruebita\\prueba4.md',
 ];
 
+
 const inputGetOnlyMds = '.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md';
 const outGetOnlyMds = ['.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md'];
-const outDirRelToAbsolute = 'D:\\jperez\\Repositorios\\LIM008-fe-md-links\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md';
-
+const outDirRelToAbsolute = dirRelativeToAbsolute('.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md');
 const inputFailGetOnlyMds = '.\\pruebita\\DIR1\\DIR3.1\\hijo1DIR3_1.md';
 
 
