@@ -1,20 +1,15 @@
+#!/usr/bin/env node
 import {getAllFilesMd, dirRelativeToAbsolute} from './controllers/getAllMd.js';
 import {getAllLinksFile} from './controllers/getAllLinks.js';
-import {validateStats} from './controllers/validateStats.js';
 import {validate} from './controllers/validate.js';
 import {stats} from './controllers/stats.js';
-import {statsOrValidate} from './util/util.js';
-
-const inputPath = process.argv[2];
-let statsValidate = statsOrValidate;
-statsValidate = validateStats(process.argv[3], statsValidate);
-statsValidate = validateStats(process.argv[4], statsValidate);
+import {inputPath, statsValidate} from './commandLine.js';
 
 const mdLinks = (dir, statsOrValidate) => {
   return new Promise((resolve, reject) => {
     try {
       let saveDataFileMds = [];
-      const files = getAllFilesMd(dirRelativeToAbsolute(dir), '.md', []);
+      const files = getAllFilesMd(dirRelativeToAbsolute(dir), []);
 
       if (statsOrValidate.states && statsOrValidate.validate) {
         const promises = files.map(file => validate(getAllLinksFile(file)));
@@ -41,7 +36,7 @@ const mdLinks = (dir, statsOrValidate) => {
   });
 };
 
-mdLinks(inputPath, statsOrValidate)
+mdLinks(inputPath, statsValidate)
   .then((resolve) => {
     console.log(resolve);
   })

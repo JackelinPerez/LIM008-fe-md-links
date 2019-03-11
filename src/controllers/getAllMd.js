@@ -4,15 +4,15 @@ export const dirRelativeToAbsolute = (inputPath) => {
   const pathIsAbsolute = path.isAbsolute(inputPath);
   return pathIsAbsolute !== true ? path.resolve(inputPath) : inputPath;
 };
-export const getAllFilesMd = (absolutePath, extenFile, mdPaths) => {
+export const getAllFilesMd = (absolutePath, mdPaths) => {
   try {
     if (fs.statSync(absolutePath).isDirectory()) {
       let childPaths = fs.readdirSync(absolutePath);
       childPaths.forEach((childPath) => {
         let absoluteChildPath = path.join(absolutePath, childPath);
-        getAllFilesMd(absoluteChildPath, extenFile, mdPaths);		
+        getAllFilesMd(absoluteChildPath, mdPaths);		
       });
-    } else if (path.extname(absolutePath) === extenFile)
+    } else if (path.extname(absolutePath).toLowerCase() === '.md')
       mdPaths.push(absolutePath);		  
     return mdPaths;	
   } catch (err) {

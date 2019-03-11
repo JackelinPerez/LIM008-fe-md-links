@@ -1,8 +1,6 @@
 export const stats = (dataLinks) => {
   let saveUnike = [];
-  const links = dataLinks.map(dataLink => {
-    return dataLink.href;
-  });
+  const links = dataLinks.map(dataLink => dataLink.href);
 
   if (links[0] !== '') {
     const unikeLinks = links.reduce((objLinks, link) => {

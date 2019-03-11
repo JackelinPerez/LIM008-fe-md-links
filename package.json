@@ -12,8 +12,10 @@
   "scripts": {
     "build": "babel src -d lib",
     "eslint": "eslint --ext .js src/ test/",
-    "test": "jest --coverage",
-    "mdLinks": "node lib/controllers.js"
+    "test": "jest --coverage"
+  },
+  "bin": {
+    "mdlinks": "lib/controllers.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

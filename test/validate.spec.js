@@ -29,8 +29,8 @@ const outFailLinks =
   [{file: dirRelativeToAbsolute('pruebita\\prueba2.md'),
     href: '',
     text: '',
-    statusValue: 'empty',
-    statusMessage: 'empty', }];
+    statusValue: '',
+    statusMessage: 'Only absolute URLs are supported', }];
 
 describe('validate', () => {
   it('Deberia ser una funcion', () => {

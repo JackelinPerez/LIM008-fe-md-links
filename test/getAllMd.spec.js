@@ -16,8 +16,8 @@ const outGetAllMds = [
 ];
 
 
-const inputGetOnlyMds = '.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md';
-const outGetOnlyMds = ['.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md'];
+const inputGetOnlyMds = dirRelativeToAbsolute('.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md');
+const outGetOnlyMds = [dirRelativeToAbsolute('.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md')];
 const outDirRelToAbsolute = dirRelativeToAbsolute('.\\pruebita\\DIR3\\DIR3.1\\hijo1DIR3_1.md');
 const inputFailGetOnlyMds = '.\\pruebita\\DIR1\\DIR3.1\\hijo1DIR3_1.md';
 
@@ -27,14 +27,14 @@ describe('getAllFilesMd', () => {
     expect(typeof (getAllFilesMd)).toBe('function');
   });
   it('Deberia obtner un array .mds', () => {
-    expect(getAllFilesMd(inputPathRelative, '.md', [])).toEqual(outGetAllMds);
+    expect(getAllFilesMd(inputPathRelative, [])).toEqual(outGetAllMds);
   });
   it('Deberia obtner la ruta si es un archivo .md', () => {
-    expect(getAllFilesMd(inputGetOnlyMds, '.md', [])).toEqual(outGetOnlyMds);
+    expect(getAllFilesMd(inputGetOnlyMds, [])).toEqual(outGetOnlyMds);
   });
   it('Deberia obtner un mensaje de error si no existe la ruta', () => {
     try {
-      getAllFilesMd(inputFailGetOnlyMds, '.md', []);
+      getAllFilesMd(inputFailGetOnlyMds, []);
     } catch (e) {
       expect(e).toEqual(`ENOENT: no such file or directory, stat '${inputFailGetOnlyMds}'`);
     }
