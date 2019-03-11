@@ -1,19 +1,17 @@
-import {fs, reglinkIntoMd, regTextHref} from '../util/util.js';
+import {fs, reglinkMd} from '../util/util.js';
 
 export const getAllLinksFile = (fileMdPath) => {
   let dataLinks = [];
+  let linksMatch;
   const readFileMd = fs.readFileSync(fileMdPath, 'utf8').toString();
-  let linksMatch = readFileMd.match(reglinkIntoMd);
-  if (linksMatch !== null) {
-    dataLinks = linksMatch.reduce((dataLink, link) => {
-      const textHref = link.match(regTextHref);
-      dataLink.push({ 
+  if (reglinkMd.test(readFileMd)) {
+    while ((linksMatch = reglinkMd.exec(readFileMd)) !== null) {
+      dataLinks.push({ 
         file: fileMdPath,
-        text: textHref[1],
-        href: textHref[2]
+        text: linksMatch[1],
+        href: linksMatch[2]
       });
-      return dataLink;
-    }, []);
+    }
   } else dataLinks.push({file: fileMdPath, text: '', href: '', });
   return dataLinks;
 };

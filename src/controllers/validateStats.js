@@ -4,7 +4,7 @@ export const validateStats = (status, statsOrValidate) => {
     statsOrValidate.validate = true;
     break;
   case '--stats':
-    statsOrValidate.states = true;
+    statsOrValidate.stats = true;
     break;
   default:
     break;

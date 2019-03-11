@@ -10,8 +10,8 @@ const mdLinks = (dir, statsOrValidate) => {
     try {
       let saveDataFileMds = [];
       const files = getAllFilesMd(dirRelativeToAbsolute(dir), []);
-
-      if (statsOrValidate.states && statsOrValidate.validate) {
+	
+      if (statsOrValidate.stats && statsOrValidate.validate) {
         const promises = files.map(file => validate(getAllLinksFile(file)));
         Promise.all(promises).then(responses => {
           const dataAllLinks = responses.map((response) => {
@@ -20,10 +20,10 @@ const mdLinks = (dir, statsOrValidate) => {
           });
           resolve(dataAllLinks);
         });
-      } else if (statsOrValidate.states && !statsOrValidate.validate) {
+      } else if (statsOrValidate.stats && !statsOrValidate.validate) {
         saveDataFileMds = files.map(file => stats(getAllLinksFile(file)));
         resolve(saveDataFileMds);				
-      } else if (!statsOrValidate.states && statsOrValidate.validate) {
+      } else if (!statsOrValidate.stats && statsOrValidate.validate) {
         const promises = files.map(file => validate(getAllLinksFile(file)));
         Promise.all(promises).then(responses => resolve(responses));
       } else {
