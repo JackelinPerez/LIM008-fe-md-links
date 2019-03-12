@@ -34,5 +34,5 @@ describe('stats', () => {
   
   it('Deberia devolver una objeto con algunos campos vacios', () => {
     expect(stats(inputEmpty)).toEqual(outputEmpty);
-  });  
+  });
 });

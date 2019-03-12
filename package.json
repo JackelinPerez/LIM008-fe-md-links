@@ -1,8 +1,8 @@
 {
-  "name": "social-network",
+  "name": "markdown-links",
   "version": "1.0.0",
-  "description": "Social Network @ Laboratoria",
-  "main": "src/index.html",
+  "description": "Markdown Links @ Laboratoria",
+  "main": "lib/controllers.js",
   "keywords": [
     "javascript",
     "npm",
@@ -15,7 +15,7 @@
     "test": "jest --coverage"
   },
   "bin": {
-    "mdlinks": "lib/controllers.js"
+    "mdlinks": "lib/commandLine.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

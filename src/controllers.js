@@ -1,29 +1,27 @@
-#!/usr/bin/env node
 import {getAllFilesMd, dirRelativeToAbsolute} from './controllers/getAllMd.js';
 import {getAllLinksFile} from './controllers/getAllLinks.js';
 import {validate} from './controllers/validate.js';
 import {stats} from './controllers/stats.js';
-import {inputPath, statsValidate} from './commandLine.js';
 
-const mdLinks = (dir, statsOrValidate) => {
+export const mdLinks = (dir, option) => {  
   return new Promise((resolve, reject) => {
     try {
       let saveDataFileMds = [];
       const files = getAllFilesMd(dirRelativeToAbsolute(dir), []);
 	
-      if (statsOrValidate.stats && statsOrValidate.validate) {
+      if (option.stats && option.validate) {
         const promises = files.map(file => validate(getAllLinksFile(file)));
         Promise.all(promises).then(responses => {
           const dataAllLinks = responses.map((response) => {
-            const linksBroken = response.filter((dataLink) => dataLink.statusValue !== '200');
+            const linksBroken = response.filter((dataLink) => (!((dataLink.statusValue.toString() >= 200) && (dataLink.statusValue.toString() < 400))));
             return {...stats(response), broken: linksBroken.length};
           });
           resolve(dataAllLinks);
         });
-      } else if (statsOrValidate.stats && !statsOrValidate.validate) {
+      } else if (option.stats && !option.validate) {
         saveDataFileMds = files.map(file => stats(getAllLinksFile(file)));
         resolve(saveDataFileMds);				
-      } else if (!statsOrValidate.stats && statsOrValidate.validate) {
+      } else if (!option.stats && option.validate) {
         const promises = files.map(file => validate(getAllLinksFile(file)));
         Promise.all(promises).then(responses => resolve(responses));
       } else {
@@ -35,11 +33,3 @@ const mdLinks = (dir, statsOrValidate) => {
     }    
   });
 };
-
-mdLinks(inputPath, statsValidate)
-  .then((resolve) => {
-    console.log(resolve);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
