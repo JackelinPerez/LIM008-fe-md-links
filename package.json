@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Markdown Links @ Laboratoria",
   "main": "lib/controllers.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackelinPerez/LIM008-fe-md-links.git"
+  },
   "keywords": [
     "javascript",
     "npm",
@@ -31,5 +35,5 @@
   "dependencies": {
     "link": "^0.1.5",
     "node-fetch": "^2.3.0"
-  }
+  },
 }
