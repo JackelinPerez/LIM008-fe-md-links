@@ -12,6 +12,6 @@ export const getAllLinksFile = (fileMdPath) => {
     });
   }
   if (dataLinks.length < 1)
-    dataLinks.push({file: fileMdPath, text: '', href: '', });
+    dataLinks.push({file: fileMdPath, text: undefined, href: undefined });
   return dataLinks;
 };

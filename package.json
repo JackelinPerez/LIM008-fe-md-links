@@ -12,12 +12,14 @@
     "npm",
     "jest"
   ],
+  "author": "Jackelin Perez",
   "license": "MIT",
   "scripts": {
     "build": "babel src -d lib",
     "eslint": "eslint --ext .js src/ test/",
     "test": "jest --coverage"
   },
+  "homepage": "https://github.com/JackelinPerez/LIM008-fe-md-links",
   "bin": {
     "mdlinks": "lib/commandLine.js"
   },

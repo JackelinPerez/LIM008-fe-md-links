@@ -13,7 +13,8 @@ export const mdLinks = (dir, option) => {
         const promises = files.map(file => validate(getAllLinksFile(file)));
         Promise.all(promises).then(responses => {
           const dataAllLinks = responses.map((response) => {
-            const linksBroken = response.filter((dataLink) => (!((dataLink.statusValue.toString() >= 200) && (dataLink.statusValue.toString() < 400))));
+            const linksBroken = response.filter((dataLink) => (!((dataLink.statusValue.toString() >= 200) 
+            && (dataLink.statusValue.toString() < 400)) && dataLink.href !== undefined));
             return {...stats(response), broken: linksBroken.length};
           });
           resolve(dataAllLinks);

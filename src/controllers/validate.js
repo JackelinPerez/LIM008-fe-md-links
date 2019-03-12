@@ -6,7 +6,7 @@ export const validate = (links) => {
       .then(response => {
         return {
           ...link,
-          statusValue: !response.errorLinks ? `${response.status}` : '',
+          statusValue: !response.errorLinks ? `${response.status}` : '---',
           statusMessage: !response.errorLinks ? `${response.statusText}` : response.errorLinks
         };
       });
