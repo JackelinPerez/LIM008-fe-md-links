@@ -3,7 +3,6 @@ export const fs = require('fs');
 
 export const reglinkMd = /[^!]\[(.*)\]\((.*)\)/g;
 
-export const statsOrValidate = {
-  validate: false,
-  stats: false,
+export const option = {
+  validate: false
 };
