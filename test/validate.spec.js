@@ -2,35 +2,35 @@ import {validate} from '../src/controllers/validate.js';
 import {dirRelativeToAbsolute} from '../src/controllers/getAllMd.js';
 
 const inputLinks =
- [{file: dirRelativeToAbsolute('pruebita\\DIR2\\README_Cipher.md'),
+ [{file: dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md'),
    href: 'https://en.wikipedia.org/wiki/Caesar_cipher',
    text: 'cifrado César'},
- {file: dirRelativeToAbsolute('pruebita\\DIR2\\README_Cipher.md'),
+ {file: dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md'),
    href: 'https://jackelinperez.github.io/lim-2018-11-bc-core-am-cipher/src/',
    text: 'Enlace'}];
 const outLinks =
-   [{file: dirRelativeToAbsolute('pruebita\\DIR2\\README_Cipher.md'),
+   [{file: dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md'),
      href: 'https://en.wikipedia.org/wiki/Caesar_cipher',
      text: 'cifrado César',
-     statusValue: '200',
+     status: 200,
      statusMessage: 'OK',
    },
-   {file: dirRelativeToAbsolute('pruebita\\DIR2\\README_Cipher.md'),
+   {file: dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md'),
      href: 'https://jackelinperez.github.io/lim-2018-11-bc-core-am-cipher/src/',
      text: 'Enlace',
-     statusValue: '200',
+     status: 200,
      statusMessage: 'OK',    
    }];
 const inputFailLinks =
-   [{file: dirRelativeToAbsolute('pruebita\\prueba2.md'),
+   [{file: dirRelativeToAbsolute('pruebita/prueba2.md'),
      href: '',
      text: ''}];
 const outFailLinks =
-  [{file: dirRelativeToAbsolute('pruebita\\prueba2.md'),
+  [{file: dirRelativeToAbsolute('pruebita/prueba2.md'),
     href: '',
     text: '',
-    statusValue: '',
-    statusMessage: 'Only absolute URLs are supported', }];
+    statusValue: undefined,
+    statusMessage: 'FAIL', }];
 
 describe('validate', () => {
   it('Deberia ser una funcion', () => {

@@ -2,17 +2,17 @@ import {getAllLinksFile} from '../src/controllers/getAllLinks.js';
 import {dirRelativeToAbsolute} from '../src/controllers/getAllMd.js';
 
 
-const inputDirMd = dirRelativeToAbsolute('pruebita\\DIR2\\README_Cipher.md');
+const inputDirMd = dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md');
 const outDataLinksMd = [
-  {'file': dirRelativeToAbsolute('pruebita\\DIR2\\README_Cipher.md'),
+  {'file': dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md'),
     'href': 'https://en.wikipedia.org/wiki/Caesar_cipher',
     'text': 'cifrado César'},
-  {'file': dirRelativeToAbsolute('pruebita\\DIR2\\README_Cipher.md'),
+  {'file': dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md'),
     'href': 'https://jackelinperez.github.io/lim-2018-11-bc-core-am-cipher/src/',
     'text': 'Enlace'}];
 
-const inputDirMdEmpty = dirRelativeToAbsolute('pruebita\\prueba2.md');
-const outFailGetOnlyMds = [{'file': dirRelativeToAbsolute('pruebita\\prueba2.md'), 'href': '', 'text': ''}];
+const inputDirMdEmpty = dirRelativeToAbsolute('pruebita/prueba2.md');
+const outFailGetOnlyMds = [];
 
 describe('getAllLinksFile', () => {
   it('Deberia ser una funcion', () => {

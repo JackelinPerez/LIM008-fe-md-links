@@ -3,25 +3,25 @@ import {dirRelativeToAbsolute} from '../src/controllers/getAllMd.js';
 
 
 const inputDataLinks = [ { file:
-    dirRelativeToAbsolute('pruebita\\prueba1.md'),
+    dirRelativeToAbsolute('pruebita/prueba1.md'),
 text: 'Markdown',
 href: 'https://es.wikipedia.org/wiki/Markdownasdas' },
 { file:
-    dirRelativeToAbsolute('pruebita\\prueba1.md'),
+    dirRelativeToAbsolute('pruebita/prueba1.md'),
 text: 'Markdown',
 href: 'https://es.wikipedia.org/wiki/Markdownasdas' },
 { file:
-    dirRelativeToAbsolute('pruebita\\prueba1.md'),
+    dirRelativeToAbsolute('pruebita/prueba1.md'),
 text: 'Markdown',
 href: 'https://es.wikipedia.org/wiki/Markdownasdas' } ];
 
-const outDataLink = {file: dirRelativeToAbsolute('pruebita\\prueba1.md'), total: 3, unique: 1};
+const outDataLink = {file: dirRelativeToAbsolute('pruebita/prueba1.md'), total: 3, unique: 1};
 const inputEmpty = [
-  { file: dirRelativeToAbsolute('pruebita\\prueba2.md'),
-    text: '',
-    href: '' }
+  { file: dirRelativeToAbsolute('pruebita/prueba2.md'),
+    text: undefined,
+    href: undefined }
 ];
-const outputEmpty = {file: dirRelativeToAbsolute('pruebita\\prueba2.md'), total: '', unique: ''};
+const outputEmpty = [];
 
 describe('stats', () => {
   it('Deberia ser una funcion', () => {

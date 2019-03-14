@@ -9,6 +9,11 @@ export const stats = (dataLinks) => {
     }, {});
     saveUnike = Object.keys(unikeLinks);
   }
-  return (links[0] !== undefined) ? 
-    {file: dataLinks[0].file, total: links.length, unique: saveUnike.length} : {file: dataLinks[0].file, total: 0, unique: 0};
+
+  if (links[0])
+    return {file: dataLinks[0].file, total: links.length, unique: saveUnike.length};
+  else return saveUnike;
+
+  // return (links[0] !== undefined) ? 
+  //   {file: dataLinks[0].file, total: links.length, unique: saveUnike.length} : {file: dataLinks[0].file, total: 0, unique: 0};
 };

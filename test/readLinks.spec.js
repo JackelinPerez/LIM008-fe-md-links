@@ -8,9 +8,10 @@ describe('readLinks', () => {
     expect(typeof (readLinks)).toBe('function');
   });
 
-  it('Deberia devolver una promesa', () => {
+  it('Deberia devolver una promesa', (done) => {
     readLinks(inputFetch).then((resolve) => {
       expect(typeof (resolve)).toBe('object');
+      done();
     });
   });
 

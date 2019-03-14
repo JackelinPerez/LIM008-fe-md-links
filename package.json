@@ -1,5 +1,5 @@
 {
-  "name": "mdlinks",
+  "name": "md-links",
   "version": "1.0.0",
   "description": "Markdown Links @ Laboratoria",
   "main": "lib/controllers.js",
@@ -37,5 +37,12 @@
   "dependencies": {
     "link": "^0.1.5",
     "node-fetch": "^2.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/JackelinPerez/LIM008-fe-md-links/issues"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
   }
 }

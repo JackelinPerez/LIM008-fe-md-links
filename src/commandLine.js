@@ -2,37 +2,42 @@
 import {option} from './util/util.js';
 import {mdLinks} from './controllers.js';
 import {stats} from './controllers/stats.js';
+import {validateStats} from './controllers/validateStats.js';
 
 const [,, ...args] = process.argv;
+let inputUser = {
+  validate: false,
+  stats: false,
+};
 
-const inputPath = args[0];
-const validate = args.filter(arg => arg === '--validate');
-if (validate.length > 0) option.validate = true;
-const inputStats = args.filter(arg => arg === '--stats').length;
+const inputPathUser = args[0];
+inputUser = validateStats(args[1], inputUser);
+inputUser = validateStats(args[2], inputUser);
+option.validate = inputUser.validate;
 
-const cli = (stats_, option) => {
-  mdLinks(inputPath, option)
+export const cli = (inputPath, inputStats, option) => {
+  return mdLinks(inputPath, option)
     .then((resultMdLinks) => {
-      if (stats_ && option.validate) {
-        Promise.all(resultMdLinks).then(responses => {
+      if (inputStats && option.validate) {
+        return Promise.all(resultMdLinks).then(responses => {
           const dataAllLinks = responses.map((response) => {
-            const linksBroken = response.filter((dataLink) => (!((dataLink.statusValue.toString() >= 200) 
-            && (dataLink.statusValue.toString() < 400)) && dataLink.href !== undefined));
-            return {...stats(response), broken: linksBroken.length};
+            const linksBroken = response.filter((dataLink) => (!(dataLink.status >= 200 && dataLink.status < 400)));
+            if (response.length > 0) return {...stats(response), broken: linksBroken.length};
           });
-          console.log(dataAllLinks);
+          return dataAllLinks;
         });
-        console.log('funcion validate y stats');
-      } else if (stats_) {
+      } else if (inputStats) {
         const saveDataFileMds = resultMdLinks.map(resultMdLinks => stats(resultMdLinks));
-        console.log(saveDataFileMds);
+        return saveDataFileMds;
       } else {
-        console.log(resultMdLinks);
+        return resultMdLinks;
       }
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
-cli(inputStats, option);
+cli(inputPathUser, inputUser.stats, option)
+  .then((outMdlinks) => console.log(outMdlinks)
+  );
