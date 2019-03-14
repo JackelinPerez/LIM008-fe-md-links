@@ -20,7 +20,7 @@ Se creo una librería para obtener información especifica de links(urls) en arc
 
 Para instalar la librería solo deberás de crear una carpeta en el cual harás tus pruebas, abrir tu terminal desde la ruta de creación y escribirás el siguiente comando: npm i JackelinPerez/md-links , como indica en la siguiente figura:
 
-![install npm](D:\jperez\Repositorios\LIM008-fe-md-links\img\install.png)
+![install npm](img/install.png)
 
 ## Sintaxis
 
@@ -53,22 +53,22 @@ Habrá 4 posibles combinaciones de uso:
  #### Primera Opcion:
  Invocando la librería y el directorio a buscar, este puede ser relativo o absoluto, así como muestra la siguiente imagen:
 
-![install npm](D:\jperez\Repositorios\LIM008-fe-md-links\img\terminal_1.png)
+![solo path](img/terminal_1.png)
 
  #### Segunda Opcion:
  Invocando la librería el directorio a buscar, este puede ser relativo o absoluto, y la opcion --validate, así como muestra la siguiente imagen:
 
-![install npm](D:\jperez\Repositorios\LIM008-fe-md-links\img\terminal_2.png)
+![path + validate](img/terminal_2.png)
 
  #### Tercera Opcion:
  Invocando la librería el directorio a buscar, este puede ser relativo o absoluto, y la opcion --stats, así como muestra la siguiente imagen:
 
-![install npm](D:\jperez\Repositorios\LIM008-fe-md-links\img\terminal_3.png)
+![path + stats](img/terminal_3.png)
 
  #### Cuarta Opcion:
  Invocando la librería el directorio a buscar, este puede ser relativo o absoluto, y la opcion --stats y --validate, así como muestra la siguiente imagen:
 
-![install npm](D:\jperez\Repositorios\LIM008-fe-md-links\img\terminal_4.png)
+![path + stats + validate](img/terminal_4.png)
 
 ### Importando a otros scripts
 
@@ -78,13 +78,13 @@ Importando la libreria a otro script.
 
 Con validate: true, como muestra la siguiente imagen:
 
-![install npm](D:\jperez\Repositorios\LIM008-fe-md-links\img\importando1.png)
+![importando validate:true](img/importando1.png)
 
 #### Segunda Opcion:
 
 Con validate: false, como muestra la siguiente imagen:
 
-![install npm](D:\jperez\Repositorios\LIM008-fe-md-links\img\importando2.png)
+![importando validate:false](img/importando2.png)
 
 ## Conclusion.
 
