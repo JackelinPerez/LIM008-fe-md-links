@@ -7,7 +7,7 @@ export const getAllLinksFile = (fileMdPath) => {
   while ((linksMatch = reglinkMd.exec(readFileMd)) !== null) {
     dataLinks.push({ 
       file: fileMdPath,
-      text: linksMatch[1],
+      text: linksMatch[1].substr(0, 50),
       href: linksMatch[2]
     });
   }
