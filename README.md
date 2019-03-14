@@ -16,7 +16,7 @@ la información que se quiere compartir.
 
 Se creo una librería para obtener información especifica de links(urls) en archivos Markdown utilizando [Node.js](https://nodejs.org/es/)
 
-##Instalación
+## Instalación
 
 Para instalar la librería solo deberás de crear una carpeta en el cual harás tus pruebas, abrir tu terminal desde la ruta de creación y escribirás el siguiente comando: npm i JackelinPerez/md-links , como indica en la siguiente figura:
 
