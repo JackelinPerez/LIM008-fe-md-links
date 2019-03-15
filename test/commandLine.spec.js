@@ -4,7 +4,7 @@ import {dirRelativeToAbsolute} from '../src/controllers/getAllMd.js';
 const inputDirMd = dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md');
 const inputDirMdEmpty = dirRelativeToAbsolute('pruebita/prueba3.md');
 
-const outDirMdEmpty = [undefined];
+const outDirMdEmpty = [{}];
 
 const outDirMd = [
   [{file: dirRelativeToAbsolute('pruebita/DIR2/README_Cipher.md'), 

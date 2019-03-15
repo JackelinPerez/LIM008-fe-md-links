@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import {option} from './util/util.js';
 import {mdLinks} from './controllers.js';
-import {stats} from './controllers/stats.js';
+import {statsAllFiles, statsValidateAllFiles} from './controllers/stats.js';
 import {validateStats} from './controllers/validateStats.js';
 
 const [,, ...args] = process.argv;
@@ -19,16 +19,9 @@ export const cli = (inputPath, inputStats, option) => {
   return mdLinks(inputPath, option)
     .then((resultMdLinks) => {
       if (inputStats && option.validate) {
-        return Promise.all(resultMdLinks).then(responses => {
-          const dataAllLinks = responses.map((response) => {
-            const linksBroken = response.filter((dataLink) => (!(dataLink.status >= 200 && dataLink.status < 400)));
-            if (response.length > 0) return {...stats(response), broken: linksBroken.length};
-          });
-          return dataAllLinks;
-        });
+        return statsValidateAllFiles(resultMdLinks);
       } else if (inputStats) {
-        const saveDataFileMds = resultMdLinks.map(resultMdLinks => stats(resultMdLinks));
-        return saveDataFileMds;
+        return statsAllFiles(resultMdLinks);
       } else {
         return resultMdLinks;
       }

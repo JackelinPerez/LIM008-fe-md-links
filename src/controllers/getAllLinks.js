@@ -11,7 +11,9 @@ export const getAllLinksFile = (fileMdPath) => {
       href: linksMatch[2]
     });
   }
-  // if (dataLinks.length < 1)
-  //   dataLinks.push({file: fileMdPath, text: undefined, href: undefined });
   return dataLinks;
+};
+
+export const getAllLinksFiles = (files) => {
+  return files.map(file => getAllLinksFile(file));
 };

@@ -18,10 +18,10 @@ href: 'https://es.wikipedia.org/wiki/Markdownasdas' } ];
 const outDataLink = {file: dirRelativeToAbsolute('pruebita/prueba1.md'), total: 3, unique: 1};
 const inputEmpty = [
   { file: dirRelativeToAbsolute('pruebita/prueba2.md'),
-    text: undefined,
-    href: undefined }
+    text: '',
+    href: '' }
 ];
-const outputEmpty = [];
+const outputEmpty = {};
 
 describe('stats', () => {
   it('Deberia ser una funcion', () => {

@@ -1,4 +1,5 @@
 import {readLinks} from './readLinks.js';
+import {getAllLinksFile} from './getAllLinks.js';
 
 export const validate = (links) => {
   const promises = links.map(link => {
@@ -9,5 +10,10 @@ export const validate = (links) => {
       });
   });
 
+  return Promise.all(promises);
+};
+
+export const validates = (files) => {
+  const promises = files.map(file => validate(getAllLinksFile(file)));
   return Promise.all(promises);
 };
