@@ -35,7 +35,6 @@
     "regenerator-runtime": "^0.13.1"
   },
   "dependencies": {
-    "link": "^0.1.5",
     "node-fetch": "^2.3.0"
   },
   "bugs": {
