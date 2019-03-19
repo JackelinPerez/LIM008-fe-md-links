@@ -15,5 +15,8 @@ export const getAllLinksFile = (fileMdPath) => {
 };
 
 export const getAllLinksFiles = (files) => {
-  return files.map(file => getAllLinksFile(file));
+  return files.reduce((acumm, file) => {
+    getAllLinksFile(file).forEach(ele => acumm.push(ele));
+    return acumm;
+  }, []);
 };

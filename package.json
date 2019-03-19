@@ -2,7 +2,7 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "Markdown Links @ Laboratoria",
-  "main": "lib/controllers.js",
+  "main": "lib/mdLinks.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JackelinPerez/LIM008-fe-md-links.git"
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/JackelinPerez/LIM008-fe-md-links",
   "bin": {
-    "mdlinks": "lib/commandLine.js"
+    "mdlinks": "lib/controllerCli.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

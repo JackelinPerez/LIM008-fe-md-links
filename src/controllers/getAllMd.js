@@ -2,7 +2,7 @@ import {path, fs} from '../util/util.js';
 
 export const dirRelativeToAbsolute = (inputPath) => {
   const pathIsAbsolute = path.isAbsolute(inputPath);
-  return pathIsAbsolute !== true ? path.resolve(inputPath) : inputPath;
+  return !pathIsAbsolute ? path.resolve(inputPath) : inputPath;
 };
 export const getAllFilesMd = (absolutePath, mdPaths) => {
   try {

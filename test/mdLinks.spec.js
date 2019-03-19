@@ -1,4 +1,4 @@
-import {mdLinks} from '../src/controllers.js';
+import {mdLinks} from '../src/mdLinks.js';
 import {dirRelativeToAbsolute} from '../src/controllers/getAllMd.js';
 
 const inputMdlinksDir = 'pruebita/DIR1/hijo1DIR1.md';

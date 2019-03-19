@@ -1,27 +1,31 @@
-export const stats = (dataLinks) => {
-  let saveUnike = [];
-  const links = dataLinks.map(dataLink => dataLink.href);
+import {repeatedAccount} from '../util/util.js';
 
-  if (links[0]) {
-    const unikeLinks = links.reduce((objLinks, link) => {
-      objLinks[link] = (objLinks[link] || 0) + 1;
-      return objLinks;
-    }, {});
-    saveUnike = Object.keys(unikeLinks);
-    return {file: dataLinks[0].file, total: links.length, unique: saveUnike.length};
-  } else return {};
+export const groupObjectsPath = (allDataLinks) => {
+  const pathsMd = [...allDataLinks].map(obj => obj.file);
+  return repeatedAccount(pathsMd).reduce((acumm, pathMd) => {
+    let pathsMdLinks = [...allDataLinks].filter(dataLink => dataLink.file === pathMd);
+    acumm.push(pathsMdLinks);
+    return acumm;
+  }, []);
 };
 
-export const statsAllFiles = (allDataLinks) => {
-  return allDataLinks.map(dataLinks => stats(dataLinks));
+export const stats = (dataLinks) => {
+  const links = dataLinks.map(dataLink => dataLink.href);
+  const saveUnike = repeatedAccount(links);
+  return {file: dataLinks[0].file, total: links.length, unique: saveUnike.length};
+};
+
+export const statsAllFiles = (arraysAllDataLinks) => {
+  return groupObjectsPath(arraysAllDataLinks).map(dataLinks => stats(dataLinks));
 };
 
 export const statsValidateAllFiles = (allDataLinks) => {
-  return Promise.all(allDataLinks).then(responses => {
-    const dataAllLinks = responses.map((response) => {
-      const linksBroken = response.filter((dataLink) => (!(dataLink.status >= 200 && dataLink.status < 400)));
-      return (response.length > 0) ? {...stats(response), broken: linksBroken.length} : {};
-    });
-    return dataAllLinks;
+  return groupObjectsPath(allDataLinks).map((ele) => {
+    const linksBroken = ele.filter((dataLink) => (!(dataLink.status >= 200 && dataLink.status < 400)));
+    return (ele.length > 0) ? {...stats(ele), broken: linksBroken.length} : {};
   });
+};
+
+export const statsOrValidate = (dataLinks, validate) => {
+  return (validate) ? statsValidateAllFiles(dataLinks) : statsAllFiles(dataLinks);
 };
