@@ -22,14 +22,14 @@ const outLinks =
      statusMessage: 'OK',    
    }];
 const inputFailLinks =
-   [{file: dirRelativeToAbsolute('pruebita/prueba2.md'),
+   [{file: dirRelativeToAbsolute('pruebita/prueba1.md'),
      href: '',
      text: ''}];
 const outFailLinks =
-  [{file: dirRelativeToAbsolute('pruebita/prueba2.md'),
+  [{file: dirRelativeToAbsolute('pruebita/prueba1.md'),
     href: '',
     text: '',
-    statusValue: undefined,
+    status: 'No existe Dominio',
     statusMessage: 'FAIL', }];
 
 describe('validate', () => {

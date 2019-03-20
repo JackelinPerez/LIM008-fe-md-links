@@ -10,7 +10,7 @@ describe('readLinks', () => {
 
   it('Deberia devolver una promesa', (done) => {
     readLinks(inputFetch).then((resolve) => {
-      expect(typeof (resolve)).toBe('object');
+      expect(resolve.status).toBe(200);
       done();
     });
   });

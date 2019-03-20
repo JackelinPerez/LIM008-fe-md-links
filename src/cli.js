@@ -7,7 +7,7 @@ export const cli = (inputPath, option) => {
       return (option.stats) ? statsOrValidate(resultMdLinks, option.validate) : resultMdLinks;
     })
     .catch((err) => {
-      return '\n Directorio No existe';
+      return err;
     });
 };
 

@@ -8,7 +8,7 @@ export const mdLinks = (dir, option) => {
       const files = getAllFilesMd(dirRelativeToAbsolute(dir), []);
       return (option.validate) ? validates(files).then(links => resolve(links)) : resolve(getAllLinksFiles(files));
     } catch (err) {
-      reject(err);
+      reject('\n Directorio No existe');
     }    
   });
 };
